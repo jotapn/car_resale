@@ -65,6 +65,14 @@
         "documentation": {}
     },
     {
+        "label": "cars_view",
+        "importPath": "cars.views",
+        "description": "cars.views",
+        "isExtraImport": true,
+        "detail": "cars.views",
+        "documentation": {}
+    },
+    {
         "label": "get_wsgi_application",
         "importPath": "django.core.wsgi",
         "description": "django.core.wsgi",
@@ -371,7 +379,7 @@
         "kind": 5,
         "importPath": "app.urls",
         "description": "app.urls",
-        "peekOfCode": "urlpatterns = [\n    path('admin/', admin.site.urls),\n] + static(settings.MEDIA_ROOT, document_root=settings.MEDIA_ROOT)",
+        "peekOfCode": "urlpatterns = [\n    path('admin/', admin.site.urls),\n    path('cars/', cars_view),\n] + static(settings.MEDIA_ROOT, document_root=settings.MEDIA_ROOT)",
         "detail": "app.urls",
         "documentation": {}
     },
@@ -454,6 +462,15 @@
         "description": "cars.models",
         "peekOfCode": "class Car(models.Model):    \n    id = models.AutoField(primary_key=True)\n    model = models.CharField(max_length=200)\n    brand = models.ForeignKey(Brand, on_delete=models.PROTECT, related_name='car_brand')\n    factory_year = models.IntegerField(blank=True, null=True)\n    model_year = models.IntegerField(blank=True, null=True)\n    plate = models.CharField(max_length=10, blank=True, null=True)\n    value = models.DecimalField(max_digits=10,decimal_places=2,blank=True, null=True)\n    photo = models.ImageField(upload_to='cars/',blank=True, null=True)\n    def __str__(self):",
         "detail": "cars.models",
+        "documentation": {}
+    },
+    {
+        "label": "cars_view",
+        "kind": 2,
+        "importPath": "cars.views",
+        "description": "cars.views",
+        "peekOfCode": "def cars_view(request):\n    return render(request, 'cars.html', {'cars': {'model':'Astra'}})",
+        "detail": "cars.views",
         "documentation": {}
     },
     {
