@@ -129,6 +129,38 @@
         "documentation": {}
     },
     {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
         "label": "models",
         "importPath": "django.db",
         "description": "django.db",
@@ -155,6 +187,14 @@
     },
     {
         "label": "Brand",
+        "importPath": "cars.models",
+        "description": "cars.models",
+        "isExtraImport": true,
+        "detail": "cars.models",
+        "documentation": {}
+    },
+    {
+        "label": "Car",
         "importPath": "cars.models",
         "description": "cars.models",
         "isExtraImport": true,
@@ -262,7 +302,7 @@
         "kind": 5,
         "importPath": "app.settings",
         "description": "app.settings",
-        "peekOfCode": "ROOT_URLCONF = 'app.urls'\nTEMPLATES = [\n    {\n        'BACKEND': 'django.template.backends.django.DjangoTemplates',\n        'DIRS': [],\n        'APP_DIRS': True,\n        'OPTIONS': {\n            'context_processors': [\n                'django.template.context_processors.debug',\n                'django.template.context_processors.request',",
+        "peekOfCode": "ROOT_URLCONF = 'app.urls'\nTEMPLATES = [\n    {\n        'BACKEND': 'django.template.backends.django.DjangoTemplates',\n        'DIRS': [os.path.join(BASE_DIR, \"app/templates\")],\n        'APP_DIRS': True,\n        'OPTIONS': {\n            'context_processors': [\n                'django.template.context_processors.debug',\n                'django.template.context_processors.request',",
         "detail": "app.settings",
         "documentation": {}
     },
@@ -271,7 +311,7 @@
         "kind": 5,
         "importPath": "app.settings",
         "description": "app.settings",
-        "peekOfCode": "TEMPLATES = [\n    {\n        'BACKEND': 'django.template.backends.django.DjangoTemplates',\n        'DIRS': [],\n        'APP_DIRS': True,\n        'OPTIONS': {\n            'context_processors': [\n                'django.template.context_processors.debug',\n                'django.template.context_processors.request',\n                'django.contrib.auth.context_processors.auth',",
+        "peekOfCode": "TEMPLATES = [\n    {\n        'BACKEND': 'django.template.backends.django.DjangoTemplates',\n        'DIRS': [os.path.join(BASE_DIR, \"app/templates\")],\n        'APP_DIRS': True,\n        'OPTIONS': {\n            'context_processors': [\n                'django.template.context_processors.debug',\n                'django.template.context_processors.request',\n                'django.contrib.auth.context_processors.auth',",
         "detail": "app.settings",
         "documentation": {}
     },
@@ -379,7 +419,7 @@
         "kind": 5,
         "importPath": "app.urls",
         "description": "app.urls",
-        "peekOfCode": "urlpatterns = [\n    path('admin/', admin.site.urls),\n    path('cars/', cars_view),\n] + static(settings.MEDIA_ROOT, document_root=settings.MEDIA_ROOT)",
+        "peekOfCode": "urlpatterns = [\n    path('admin/', admin.site.urls),\n    path('cars/', cars_view, name='cars_list'),\n] + static(settings.MEDIA_ROOT, document_root=settings.MEDIA_ROOT)",
         "detail": "app.urls",
         "documentation": {}
     },
@@ -420,11 +460,29 @@
         "documentation": {}
     },
     {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "cars.migrations.0004_alter_car_photo",
+        "description": "cars.migrations.0004_alter_car_photo",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('cars', '0003_car_photo_car_plate'),\n    ]\n    operations = [\n        migrations.AlterField(\n            model_name='car',\n            name='photo',\n            field=models.ImageField(blank=True, null=True, upload_to='cars'),\n        ),",
+        "detail": "cars.migrations.0004_alter_car_photo",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "cars.migrations.0005_alter_car_photo",
+        "description": "cars.migrations.0005_alter_car_photo",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('cars', '0004_alter_car_photo'),\n    ]\n    operations = [\n        migrations.AlterField(\n            model_name='car',\n            name='photo',\n            field=models.FileField(blank=True, null=True, upload_to='cars'),\n        ),",
+        "detail": "cars.migrations.0005_alter_car_photo",
+        "documentation": {}
+    },
+    {
         "label": "CarAdmin",
         "kind": 6,
         "importPath": "cars.admin",
         "description": "cars.admin",
-        "peekOfCode": "class CarAdmin(admin.ModelAdmin):\n    list_display = ('model','brand', 'factory_year', 'model_year', 'value')\n    search_fields = ('model','brand')\nclass BrandAdmin(admin.ModelAdmin):\n    list_display = ('name', )\n    search_fields = ('name', )\nadmin.site.register(Car, CarAdmin)\nadmin.site.register(Brand, BrandAdmin)",
+        "peekOfCode": "class CarAdmin(admin.ModelAdmin):\n    list_display = ('model','brand', 'factory_year', 'model_year', 'value')\n    search_fields = ('model','brand')\nclass BrandAdmin(admin.ModelAdmin):\n    list_display = ('name','id' )\n    search_fields = ('name', )\nadmin.site.register(Car, CarAdmin)\nadmin.site.register(Brand, BrandAdmin)",
         "detail": "cars.admin",
         "documentation": {}
     },
@@ -433,7 +491,7 @@
         "kind": 6,
         "importPath": "cars.admin",
         "description": "cars.admin",
-        "peekOfCode": "class BrandAdmin(admin.ModelAdmin):\n    list_display = ('name', )\n    search_fields = ('name', )\nadmin.site.register(Car, CarAdmin)\nadmin.site.register(Brand, BrandAdmin)",
+        "peekOfCode": "class BrandAdmin(admin.ModelAdmin):\n    list_display = ('name','id' )\n    search_fields = ('name', )\nadmin.site.register(Car, CarAdmin)\nadmin.site.register(Brand, BrandAdmin)",
         "detail": "cars.admin",
         "documentation": {}
     },
@@ -460,7 +518,7 @@
         "kind": 6,
         "importPath": "cars.models",
         "description": "cars.models",
-        "peekOfCode": "class Car(models.Model):    \n    id = models.AutoField(primary_key=True)\n    model = models.CharField(max_length=200)\n    brand = models.ForeignKey(Brand, on_delete=models.PROTECT, related_name='car_brand')\n    factory_year = models.IntegerField(blank=True, null=True)\n    model_year = models.IntegerField(blank=True, null=True)\n    plate = models.CharField(max_length=10, blank=True, null=True)\n    value = models.DecimalField(max_digits=10,decimal_places=2,blank=True, null=True)\n    photo = models.ImageField(upload_to='cars/',blank=True, null=True)\n    def __str__(self):",
+        "peekOfCode": "class Car(models.Model):    \n    id = models.AutoField(primary_key=True)\n    model = models.CharField(max_length=200)\n    brand = models.ForeignKey(Brand, on_delete=models.PROTECT, related_name='car_brand')\n    factory_year = models.IntegerField(blank=True, null=True)\n    model_year = models.IntegerField(blank=True, null=True)\n    plate = models.CharField(max_length=10, blank=True, null=True)\n    value = models.DecimalField(max_digits=10,decimal_places=2,blank=True, null=True)\n    photo = models.FileField(upload_to='cars',blank=True, null=True)\n    def __str__(self):",
         "detail": "cars.models",
         "documentation": {}
     },
@@ -469,7 +527,7 @@
         "kind": 2,
         "importPath": "cars.views",
         "description": "cars.views",
-        "peekOfCode": "def cars_view(request):\n    return render(request, 'cars.html', {'cars': {'model':'Astra'}})",
+        "peekOfCode": "def cars_view(request):\n    cars = Car.objects.all().order_by('model')\n    search = request.GET.get('search')\n    if search:\n        cars = cars.filter(model__icontains=search)\n    return render(request, 'cars.html', {'cars': cars})",
         "detail": "cars.views",
         "documentation": {}
     },

@@ -6,7 +6,7 @@ class CarAdmin(admin.ModelAdmin):
     search_fields = ('model','brand')
 
 class BrandAdmin(admin.ModelAdmin):
-    list_display = ('name', )
+    list_display = ('name','id' )
     search_fields = ('name', )
 
 admin.site.register(Car, CarAdmin)
