@@ -41,6 +41,30 @@
         "documentation": {}
     },
     {
+        "label": "redirect",
+        "importPath": "django.shortcuts",
+        "description": "django.shortcuts",
+        "isExtraImport": true,
+        "detail": "django.shortcuts",
+        "documentation": {}
+    },
+    {
+        "label": "redirect",
+        "importPath": "django.shortcuts",
+        "description": "django.shortcuts",
+        "isExtraImport": true,
+        "detail": "django.shortcuts",
+        "documentation": {}
+    },
+    {
+        "label": "render",
+        "importPath": "django.shortcuts",
+        "description": "django.shortcuts",
+        "isExtraImport": true,
+        "detail": "django.shortcuts",
+        "documentation": {}
+    },
+    {
         "label": "path",
         "importPath": "django.urls",
         "description": "django.urls",
@@ -65,7 +89,24 @@
         "documentation": {}
     },
     {
+        "label": "cars.views",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "cars.views",
+        "description": "cars.views",
+        "detail": "cars.views",
+        "documentation": {}
+    },
+    {
         "label": "cars_view",
+        "importPath": "cars.views",
+        "description": "cars.views",
+        "isExtraImport": true,
+        "detail": "cars.views",
+        "documentation": {}
+    },
+    {
+        "label": "new_car_view",
         "importPath": "cars.views",
         "description": "cars.views",
         "isExtraImport": true,
@@ -78,6 +119,38 @@
         "description": "django.core.wsgi",
         "isExtraImport": true,
         "detail": "django.core.wsgi",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
         "documentation": {}
     },
     {
@@ -202,11 +275,27 @@
         "documentation": {}
     },
     {
+        "label": "Car",
+        "importPath": "cars.models",
+        "description": "cars.models",
+        "isExtraImport": true,
+        "detail": "cars.models",
+        "documentation": {}
+    },
+    {
         "label": "AppConfig",
         "importPath": "django.apps",
         "description": "django.apps",
         "isExtraImport": true,
         "detail": "django.apps",
+        "documentation": {}
+    },
+    {
+        "label": "forms",
+        "importPath": "django",
+        "description": "django",
+        "isExtraImport": true,
+        "detail": "django",
         "documentation": {}
     },
     {
@@ -218,11 +307,11 @@
         "documentation": {}
     },
     {
-        "label": "render",
-        "importPath": "django.shortcuts",
-        "description": "django.shortcuts",
+        "label": "CarModelForm",
+        "importPath": "cars.forms",
+        "description": "cars.forms",
         "isExtraImport": true,
-        "detail": "django.shortcuts",
+        "detail": "cars.forms",
         "documentation": {}
     },
     {
@@ -302,7 +391,7 @@
         "kind": 5,
         "importPath": "app.settings",
         "description": "app.settings",
-        "peekOfCode": "ROOT_URLCONF = 'app.urls'\nTEMPLATES = [\n    {\n        'BACKEND': 'django.template.backends.django.DjangoTemplates',\n        'DIRS': [os.path.join(BASE_DIR, \"app/templates\")],\n        'APP_DIRS': True,\n        'OPTIONS': {\n            'context_processors': [\n                'django.template.context_processors.debug',\n                'django.template.context_processors.request',",
+        "peekOfCode": "ROOT_URLCONF = 'app.urls'\nTEMPLATES = [\n    {\n        'BACKEND': 'django.template.backends.django.DjangoTemplates',\n        'DIRS': [os.path.join(BASE_DIR,\"app/templates\")],\n        'APP_DIRS': True,\n        'OPTIONS': {\n            'context_processors': [\n                'django.template.context_processors.debug',\n                'django.template.context_processors.request',",
         "detail": "app.settings",
         "documentation": {}
     },
@@ -311,7 +400,7 @@
         "kind": 5,
         "importPath": "app.settings",
         "description": "app.settings",
-        "peekOfCode": "TEMPLATES = [\n    {\n        'BACKEND': 'django.template.backends.django.DjangoTemplates',\n        'DIRS': [os.path.join(BASE_DIR, \"app/templates\")],\n        'APP_DIRS': True,\n        'OPTIONS': {\n            'context_processors': [\n                'django.template.context_processors.debug',\n                'django.template.context_processors.request',\n                'django.contrib.auth.context_processors.auth',",
+        "peekOfCode": "TEMPLATES = [\n    {\n        'BACKEND': 'django.template.backends.django.DjangoTemplates',\n        'DIRS': [os.path.join(BASE_DIR,\"app/templates\")],\n        'APP_DIRS': True,\n        'OPTIONS': {\n            'context_processors': [\n                'django.template.context_processors.debug',\n                'django.template.context_processors.request',\n                'django.contrib.auth.context_processors.auth',",
         "detail": "app.settings",
         "documentation": {}
     },
@@ -356,7 +445,7 @@
         "kind": 5,
         "importPath": "app.settings",
         "description": "app.settings",
-        "peekOfCode": "TIME_ZONE = 'America/Sao_Paulo'\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.1/howto/static-files/\nSTATIC_URL = 'static/'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nMEDIA_ROOT = os.path.join(BASE_DIR,'media')",
+        "peekOfCode": "TIME_ZONE = 'America/Sao_Paulo'\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.1/howto/static-files/\nSTATIC_URL = 'static/'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nMEDIA_ROOT = os.path.join(BASE_DIR,\"media\")",
         "detail": "app.settings",
         "documentation": {}
     },
@@ -365,7 +454,7 @@
         "kind": 5,
         "importPath": "app.settings",
         "description": "app.settings",
-        "peekOfCode": "USE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.1/howto/static-files/\nSTATIC_URL = 'static/'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nMEDIA_ROOT = os.path.join(BASE_DIR,'media')\nMEDIA_URL = '/media/'",
+        "peekOfCode": "USE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.1/howto/static-files/\nSTATIC_URL = 'static/'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nMEDIA_ROOT = os.path.join(BASE_DIR,\"media\")\nMEDIA_URL = \"/media/\"",
         "detail": "app.settings",
         "documentation": {}
     },
@@ -374,7 +463,7 @@
         "kind": 5,
         "importPath": "app.settings",
         "description": "app.settings",
-        "peekOfCode": "USE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.1/howto/static-files/\nSTATIC_URL = 'static/'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nMEDIA_ROOT = os.path.join(BASE_DIR,'media')\nMEDIA_URL = '/media/'",
+        "peekOfCode": "USE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.1/howto/static-files/\nSTATIC_URL = 'static/'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nMEDIA_ROOT = os.path.join(BASE_DIR,\"media\")\nMEDIA_URL = \"/media/\"",
         "detail": "app.settings",
         "documentation": {}
     },
@@ -383,7 +472,7 @@
         "kind": 5,
         "importPath": "app.settings",
         "description": "app.settings",
-        "peekOfCode": "STATIC_URL = 'static/'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nMEDIA_ROOT = os.path.join(BASE_DIR,'media')\nMEDIA_URL = '/media/'",
+        "peekOfCode": "STATIC_URL = 'static/'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nMEDIA_ROOT = os.path.join(BASE_DIR,\"media\")\nMEDIA_URL = \"/media/\"",
         "detail": "app.settings",
         "documentation": {}
     },
@@ -392,7 +481,7 @@
         "kind": 5,
         "importPath": "app.settings",
         "description": "app.settings",
-        "peekOfCode": "DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nMEDIA_ROOT = os.path.join(BASE_DIR,'media')\nMEDIA_URL = '/media/'",
+        "peekOfCode": "DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nMEDIA_ROOT = os.path.join(BASE_DIR,\"media\")\nMEDIA_URL = \"/media/\"",
         "detail": "app.settings",
         "documentation": {}
     },
@@ -401,7 +490,7 @@
         "kind": 5,
         "importPath": "app.settings",
         "description": "app.settings",
-        "peekOfCode": "MEDIA_ROOT = os.path.join(BASE_DIR,'media')\nMEDIA_URL = '/media/'",
+        "peekOfCode": "MEDIA_ROOT = os.path.join(BASE_DIR,\"media\")\nMEDIA_URL = \"/media/\"",
         "detail": "app.settings",
         "documentation": {}
     },
@@ -410,7 +499,7 @@
         "kind": 5,
         "importPath": "app.settings",
         "description": "app.settings",
-        "peekOfCode": "MEDIA_URL = '/media/'",
+        "peekOfCode": "MEDIA_URL = \"/media/\"",
         "detail": "app.settings",
         "documentation": {}
     },
@@ -419,7 +508,7 @@
         "kind": 5,
         "importPath": "app.urls",
         "description": "app.urls",
-        "peekOfCode": "urlpatterns = [\n    path('admin/', admin.site.urls),\n    path('cars/', cars_view, name='cars_list'),\n] + static(settings.MEDIA_ROOT, document_root=settings.MEDIA_ROOT)",
+        "peekOfCode": "urlpatterns = [\n    path('admin/', admin.site.urls),\n    path('cars/', cars_view, name='cars_list'),\n    path('new_cars/', new_car_view, name='new_car'),\n    path('', lambda request: redirect('/cars')),\n] + static(settings.MEDIA_ROOT, document_root=settings.MEDIA_ROOT)",
         "detail": "app.urls",
         "documentation": {}
     },
@@ -478,6 +567,24 @@
         "documentation": {}
     },
     {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "cars.migrations.0006_alter_car_photo",
+        "description": "cars.migrations.0006_alter_car_photo",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('cars', '0005_alter_car_photo'),\n    ]\n    operations = [\n        migrations.AlterField(\n            model_name='car',\n            name='photo',\n            field=models.ImageField(blank=True, null=True, upload_to='cars/'),\n        ),",
+        "detail": "cars.migrations.0006_alter_car_photo",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "cars.migrations.0007_alter_car_photo",
+        "description": "cars.migrations.0007_alter_car_photo",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('cars', '0006_alter_car_photo'),\n    ]\n    operations = [\n        migrations.AlterField(\n            model_name='car',\n            name='photo',\n            field=models.ImageField(blank=True, null=True, upload_to='cars'),\n        ),",
+        "detail": "cars.migrations.0007_alter_car_photo",
+        "documentation": {}
+    },
+    {
         "label": "CarAdmin",
         "kind": 6,
         "importPath": "cars.admin",
@@ -505,6 +612,15 @@
         "documentation": {}
     },
     {
+        "label": "CarModelForm",
+        "kind": 6,
+        "importPath": "cars.forms",
+        "description": "cars.forms",
+        "peekOfCode": "class CarModelForm(forms.ModelForm):\n    class Meta:\n        model = Car\n        fields = '__all__'\n    def clean_value(self):\n        value = self.clean_data.get('value')\n        if value < 20000:\n            self.add_error('value', 'Valor mínimo do carro deve ser de R$20.000')\n        return value\n    def clean_factory_year(self):",
+        "detail": "cars.forms",
+        "documentation": {}
+    },
+    {
         "label": "Brand",
         "kind": 6,
         "importPath": "cars.models",
@@ -518,7 +634,7 @@
         "kind": 6,
         "importPath": "cars.models",
         "description": "cars.models",
-        "peekOfCode": "class Car(models.Model):    \n    id = models.AutoField(primary_key=True)\n    model = models.CharField(max_length=200)\n    brand = models.ForeignKey(Brand, on_delete=models.PROTECT, related_name='car_brand')\n    factory_year = models.IntegerField(blank=True, null=True)\n    model_year = models.IntegerField(blank=True, null=True)\n    plate = models.CharField(max_length=10, blank=True, null=True)\n    value = models.DecimalField(max_digits=10,decimal_places=2,blank=True, null=True)\n    photo = models.FileField(upload_to='cars',blank=True, null=True)\n    def __str__(self):",
+        "peekOfCode": "class Car(models.Model):    \n    id = models.AutoField(primary_key=True)\n    model = models.CharField(max_length=200)\n    brand = models.ForeignKey(Brand, on_delete=models.PROTECT, related_name='car_brand')\n    factory_year = models.IntegerField(blank=True, null=True)\n    model_year = models.IntegerField(blank=True, null=True)\n    plate = models.CharField(max_length=10, blank=True, null=True)\n    value = models.DecimalField(max_digits=10,decimal_places=2,blank=True, null=True)\n    photo = models.ImageField(upload_to='cars',blank=True, null=True)\n    def __str__(self):",
         "detail": "cars.models",
         "documentation": {}
     },
@@ -527,7 +643,16 @@
         "kind": 2,
         "importPath": "cars.views",
         "description": "cars.views",
-        "peekOfCode": "def cars_view(request):\n    cars = Car.objects.all().order_by('model')\n    search = request.GET.get('search')\n    if search:\n        cars = cars.filter(model__icontains=search)\n    return render(request, 'cars.html', {'cars': cars})",
+        "peekOfCode": "def cars_view(request):\n    cars = Car.objects.all().order_by('model')\n    search = request.GET.get('search')\n    if search:\n        cars = cars.filter(model__icontains=search)\n    return render(request, 'cars.html', {'cars': cars})\ndef new_car_view(request):\n    if request.method == 'POST':\n        new_car_form = CarModelForm(request.POST, request.FILES)\n        if new_car_form.is_valid():",
+        "detail": "cars.views",
+        "documentation": {}
+    },
+    {
+        "label": "new_car_view",
+        "kind": 2,
+        "importPath": "cars.views",
+        "description": "cars.views",
+        "peekOfCode": "def new_car_view(request):\n    if request.method == 'POST':\n        new_car_form = CarModelForm(request.POST, request.FILES)\n        if new_car_form.is_valid():\n            new_car_form.save()\n            return redirect('cars_list')\n    elif request.method == 'GET':\n        new_car_form = CarModelForm()\n    return render(request, 'new_car.html', {'new_car_form': new_car_form})",
         "detail": "cars.views",
         "documentation": {}
     },
