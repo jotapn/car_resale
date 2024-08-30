@@ -232,6 +232,38 @@
         "documentation": {}
     },
     {
+        "label": "AuthenticationForm",
+        "importPath": "django.contrib.auth.forms",
+        "description": "django.contrib.auth.forms",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth.forms",
+        "documentation": {}
+    },
+    {
+        "label": "authenticate",
+        "importPath": "django.contrib.auth",
+        "description": "django.contrib.auth",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth",
+        "documentation": {}
+    },
+    {
+        "label": "login",
+        "importPath": "django.contrib.auth",
+        "description": "django.contrib.auth",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth",
+        "documentation": {}
+    },
+    {
+        "label": "logout",
+        "importPath": "django.contrib.auth",
+        "description": "django.contrib.auth",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth",
+        "documentation": {}
+    },
+    {
         "label": "os",
         "kind": 6,
         "isExtraImport": true,
@@ -307,6 +339,22 @@
     },
     {
         "label": "register_view",
+        "importPath": "accounts.views",
+        "description": "accounts.views",
+        "isExtraImport": true,
+        "detail": "accounts.views",
+        "documentation": {}
+    },
+    {
+        "label": "login_view",
+        "importPath": "accounts.views",
+        "description": "accounts.views",
+        "isExtraImport": true,
+        "detail": "accounts.views",
+        "documentation": {}
+    },
+    {
+        "label": "logout_view",
         "importPath": "accounts.views",
         "description": "accounts.views",
         "isExtraImport": true,
@@ -401,7 +449,25 @@
         "kind": 2,
         "importPath": "accounts.views",
         "description": "accounts.views",
-        "peekOfCode": "def register_view(request):\n    if request.method ==\"POST\":\n        user_form = UserCreationForm(request.POST)\n        if user_form.is_valid():\n            user_form.save()\n            return redirect( 'cars_list')\n    else:\n        user_form = UserCreationForm()\n    return render(request,'register.html', {'user_form': user_form})",
+        "peekOfCode": "def register_view(request):\n    if request.method ==\"POST\":\n        user_form = UserCreationForm(request.POST)\n        if user_form.is_valid():\n            user_form.save()\n            return redirect('login')\n    else:\n        user_form = UserCreationForm()\n    return render(request,'register.html', {'user_form': user_form})\ndef login_view(request):",
+        "detail": "accounts.views",
+        "documentation": {}
+    },
+    {
+        "label": "login_view",
+        "kind": 2,
+        "importPath": "accounts.views",
+        "description": "accounts.views",
+        "peekOfCode": "def login_view(request):\n    if request.method == 'POST':\n        username = request.POST['username']\n        password = request.POST['password']\n        user = authenticate(request, username=username, password=password)\n        if user is not None:\n            login(request, user)\n            return redirect('cars_list')\n        else:\n            login_form=AuthenticationForm()",
+        "detail": "accounts.views",
+        "documentation": {}
+    },
+    {
+        "label": "logout_view",
+        "kind": 2,
+        "importPath": "accounts.views",
+        "description": "accounts.views",
+        "peekOfCode": "def logout_view(request):\n    logout(request)\n    return redirect('cars_list')",
         "detail": "accounts.views",
         "documentation": {}
     },
@@ -590,7 +656,7 @@
         "kind": 5,
         "importPath": "app.urls",
         "description": "app.urls",
-        "peekOfCode": "urlpatterns = [\n    path('admin/', admin.site.urls),\n    path('register/', register_view, name='register'),\n    path('cars/', cars_view, name='cars_list'),\n    path('new_cars/', new_car_view, name='new_car'),\n    path('', lambda request: redirect('/cars')),    \n] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)",
+        "peekOfCode": "urlpatterns = [\n    path('admin/', admin.site.urls),\n    path('register/', register_view, name='register'),\n    path('login/', login_view, name='login'),\n    path('logout/', logout_view, name='logout'),\n    path('cars/', cars_view, name='cars_list'),\n    path('new_cars/', new_car_view, name='new_car'),\n    path('', lambda request: redirect('/cars')),    \n] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)",
         "detail": "app.urls",
         "documentation": {}
     },
