@@ -313,16 +313,7 @@
         "documentation": {}
     },
     {
-        "label": "cars.views",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "cars.views",
-        "description": "cars.views",
-        "detail": "cars.views",
-        "documentation": {}
-    },
-    {
-        "label": "cars_view",
+        "label": "CarsView",
         "importPath": "cars.views",
         "description": "cars.views",
         "isExtraImport": true,
@@ -330,7 +321,7 @@
         "documentation": {}
     },
     {
-        "label": "new_car_view",
+        "label": "NewCarView",
         "importPath": "cars.views",
         "description": "cars.views",
         "isExtraImport": true,
@@ -424,6 +415,14 @@
         "description": "cars.forms",
         "isExtraImport": true,
         "detail": "cars.forms",
+        "documentation": {}
+    },
+    {
+        "label": "View",
+        "importPath": "django.views",
+        "description": "django.views",
+        "isExtraImport": true,
+        "detail": "django.views",
         "documentation": {}
     },
     {
@@ -656,7 +655,7 @@
         "kind": 5,
         "importPath": "app.urls",
         "description": "app.urls",
-        "peekOfCode": "urlpatterns = [\n    path('admin/', admin.site.urls),\n    path('register/', register_view, name='register'),\n    path('login/', login_view, name='login'),\n    path('logout/', logout_view, name='logout'),\n    path('cars/', cars_view, name='cars_list'),\n    path('new_cars/', new_car_view, name='new_car'),\n    path('', lambda request: redirect('/cars')),    \n] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)",
+        "peekOfCode": "urlpatterns = [\n    path('admin/', admin.site.urls),\n    path('register/', register_view, name='register'),\n    path('login/', login_view, name='login'),\n    path('logout/', logout_view, name='logout'),\n    path('cars/', CarsView.as_view(), name='cars_list'),\n    path('new_cars/', NewCarView.as_view(), name='new_car'),\n    path('', lambda request: redirect('/cars')),    \n] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)",
         "detail": "app.urls",
         "documentation": {}
     },
@@ -787,20 +786,20 @@
         "documentation": {}
     },
     {
-        "label": "cars_view",
-        "kind": 2,
+        "label": "CarsView",
+        "kind": 6,
         "importPath": "cars.views",
         "description": "cars.views",
-        "peekOfCode": "def cars_view(request):\n    cars = Car.objects.all().order_by('model')\n    search = request.GET.get('search')\n    if search:\n        cars = cars.filter(model__icontains=search)\n    return render(request, 'cars.html', {'cars': cars})\ndef new_car_view(request):\n    if request.method == 'POST':\n        new_car_form = CarModelForm(request.POST, request.FILES)\n        if new_car_form.is_valid():",
+        "peekOfCode": "class CarsView(View):\n    def get(self, request):\n        cars = Car.objects.all().order_by('model')\n        search = request.GET.get('search')\n        if search:\n            cars = cars.filter(model__icontains=search)\n        return render(request, 'cars.html', {'cars': cars})\nclass NewCarView(View):\n    def get(self,request):\n        new_car_form = CarModelForm()",
         "detail": "cars.views",
         "documentation": {}
     },
     {
-        "label": "new_car_view",
-        "kind": 2,
+        "label": "NewCarView",
+        "kind": 6,
         "importPath": "cars.views",
         "description": "cars.views",
-        "peekOfCode": "def new_car_view(request):\n    if request.method == 'POST':\n        new_car_form = CarModelForm(request.POST, request.FILES)\n        if new_car_form.is_valid():\n            new_car_form.save()\n            return redirect('cars_list')\n    elif request.method == 'GET':\n        new_car_form = CarModelForm()\n    return render(request, 'new_car.html', {'new_car_form': new_car_form})",
+        "peekOfCode": "class NewCarView(View):\n    def get(self,request):\n        new_car_form = CarModelForm()\n        return render(request, 'new_car.html', {'new_car_form': new_car_form})\n    def post(self, request):\n        new_car_form = CarModelForm(request.POST, request.FILES)\n        if new_car_form.is_valid():\n            new_car_form.save()\n            return redirect('cars_list')\n        return render(request, 'new_car.html', {'new_car_form': new_car_form})",
         "detail": "cars.views",
         "documentation": {}
     },
