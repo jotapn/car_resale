@@ -208,22 +208,6 @@
         "documentation": {}
     },
     {
-        "label": "redirect",
-        "importPath": "django.shortcuts",
-        "description": "django.shortcuts",
-        "isExtraImport": true,
-        "detail": "django.shortcuts",
-        "documentation": {}
-    },
-    {
-        "label": "render",
-        "importPath": "django.shortcuts",
-        "description": "django.shortcuts",
-        "isExtraImport": true,
-        "detail": "django.shortcuts",
-        "documentation": {}
-    },
-    {
         "label": "UserCreationForm",
         "importPath": "django.contrib.auth.forms",
         "description": "django.contrib.auth.forms",
@@ -313,7 +297,7 @@
         "documentation": {}
     },
     {
-        "label": "CarsView",
+        "label": "CarsListView",
         "importPath": "cars.views",
         "description": "cars.views",
         "isExtraImport": true,
@@ -321,7 +305,7 @@
         "documentation": {}
     },
     {
-        "label": "NewCarView",
+        "label": "NewCarCreateView",
         "importPath": "cars.views",
         "description": "cars.views",
         "isExtraImport": true,
@@ -418,11 +402,19 @@
         "documentation": {}
     },
     {
-        "label": "View",
-        "importPath": "django.views",
-        "description": "django.views",
+        "label": "ListView",
+        "importPath": "django.views.generic",
+        "description": "django.views.generic",
         "isExtraImport": true,
-        "detail": "django.views",
+        "detail": "django.views.generic",
+        "documentation": {}
+    },
+    {
+        "label": "CreateView",
+        "importPath": "django.views.generic",
+        "description": "django.views.generic",
+        "isExtraImport": true,
+        "detail": "django.views.generic",
         "documentation": {}
     },
     {
@@ -655,7 +647,7 @@
         "kind": 5,
         "importPath": "app.urls",
         "description": "app.urls",
-        "peekOfCode": "urlpatterns = [\n    path('admin/', admin.site.urls),\n    path('register/', register_view, name='register'),\n    path('login/', login_view, name='login'),\n    path('logout/', logout_view, name='logout'),\n    path('cars/', CarsView.as_view(), name='cars_list'),\n    path('new_cars/', NewCarView.as_view(), name='new_car'),\n    path('', lambda request: redirect('/cars')),    \n] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)",
+        "peekOfCode": "urlpatterns = [\n    path('admin/', admin.site.urls),\n    path('register/', register_view, name='register'),\n    path('login/', login_view, name='login'),\n    path('logout/', logout_view, name='logout'),\n    path('cars/', CarsListView.as_view(), name='cars_list'),\n    path('new_cars/', NewCarCreateView.as_view(), name='new_car'),\n    path('', lambda request: redirect('/cars')),    \n] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)",
         "detail": "app.urls",
         "documentation": {}
     },
@@ -763,7 +755,7 @@
         "kind": 6,
         "importPath": "cars.forms",
         "description": "cars.forms",
-        "peekOfCode": "class CarModelForm(forms.ModelForm):\n    class Meta:\n        model = Car\n        fields = '__all__'\n    def clean_value(self):\n        value = self.clean_data.get('value')\n        if value < 20000:\n            self.add_error('value', 'Valor mínimo do carro deve ser de R$20.000')\n        return value\n    def clean_factory_year(self):",
+        "peekOfCode": "class CarModelForm(forms.ModelForm):\n    class Meta:\n        model = Car\n        fields = '__all__'\n    def clean_value(self):\n        value = self.cleaned_data.get('value')\n        if value < 20000:\n            self.add_error('value', 'Valor mínimo do carro deve ser de R$20.000')\n        return value\n    def clean_factory_year(self):",
         "detail": "cars.forms",
         "documentation": {}
     },
@@ -786,20 +778,20 @@
         "documentation": {}
     },
     {
-        "label": "CarsView",
+        "label": "CarsListView",
         "kind": 6,
         "importPath": "cars.views",
         "description": "cars.views",
-        "peekOfCode": "class CarsView(View):\n    def get(self, request):\n        cars = Car.objects.all().order_by('model')\n        search = request.GET.get('search')\n        if search:\n            cars = cars.filter(model__icontains=search)\n        return render(request, 'cars.html', {'cars': cars})\nclass NewCarView(View):\n    def get(self,request):\n        new_car_form = CarModelForm()",
+        "peekOfCode": "class CarsListView(ListView):\n    model = Car\n    template_name = 'cars.html'\n    context_object_name = 'cars'\n    def get_queryset(self):\n        cars = super().get_queryset().order_by('model')\n        search = self.request.GET.get('search')\n        if search:\n            cars = cars.filter(model__icontains=search)\n        return cars",
         "detail": "cars.views",
         "documentation": {}
     },
     {
-        "label": "NewCarView",
+        "label": "NewCarCreateView",
         "kind": 6,
         "importPath": "cars.views",
         "description": "cars.views",
-        "peekOfCode": "class NewCarView(View):\n    def get(self,request):\n        new_car_form = CarModelForm()\n        return render(request, 'new_car.html', {'new_car_form': new_car_form})\n    def post(self, request):\n        new_car_form = CarModelForm(request.POST, request.FILES)\n        if new_car_form.is_valid():\n            new_car_form.save()\n            return redirect('cars_list')\n        return render(request, 'new_car.html', {'new_car_form': new_car_form})",
+        "peekOfCode": "class NewCarCreateView(CreateView):\n    model = Car\n    form_class = CarModelForm\n    template_name = 'new_car.html'\n    success_url = '/cars/'",
         "detail": "cars.views",
         "documentation": {}
     },
