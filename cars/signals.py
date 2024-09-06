@@ -2,6 +2,7 @@ from django.db.models.signals import pre_save,post_save, pre_delete, post_delete
 from django.dispatch import receiver
 from cars.models import Car, CarInventory
 from django.db.models import Sum
+from ia_gemini.client import bio_generate
 
 
 def car_inventory_update():
@@ -11,12 +12,14 @@ def car_inventory_update():
     )['total_value']
     CarInventory.objects.create(
         cars_count = cars_count,
-        cars_value = cars_value
+        cars_values = cars_value
     )
 
 @receiver(pre_save, sender=Car)
 def car_pre_save(sender, instance, **kwargs):
-    print('pre saveee')
+    if not instance.bio:
+        ia_bio = bio_generate(instance.model, instance.brand, instance.factory_year)
+        instance.bio = ia_bio
 
 
 @receiver(post_save, sender=Car)

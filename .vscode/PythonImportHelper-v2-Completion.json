@@ -176,6 +176,38 @@
         "documentation": {}
     },
     {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
         "label": "models",
         "importPath": "django.db",
         "description": "django.db",
@@ -506,6 +538,14 @@
         "documentation": {}
     },
     {
+        "label": "bio_generate",
+        "importPath": "ia_gemini.client",
+        "description": "ia_gemini.client",
+        "isExtraImport": true,
+        "detail": "ia_gemini.client",
+        "documentation": {}
+    },
+    {
         "label": "CarModelForm",
         "importPath": "cars.forms",
         "description": "cars.forms",
@@ -567,6 +607,23 @@
         "description": "django.views.generic",
         "isExtraImport": true,
         "detail": "django.views.generic",
+        "documentation": {}
+    },
+    {
+        "label": "google.generativeai",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "google.generativeai",
+        "description": "google.generativeai",
+        "detail": "google.generativeai",
+        "documentation": {}
+    },
+    {
+        "label": "load_dotenv",
+        "importPath": "dotenv",
+        "description": "dotenv",
+        "isExtraImport": true,
+        "detail": "dotenv",
         "documentation": {}
     },
     {
@@ -885,6 +942,24 @@
         "documentation": {}
     },
     {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "cars.migrations.0009_car_bio",
+        "description": "cars.migrations.0009_car_bio",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('cars', '0008_carinventory_alter_car_value'),\n    ]\n    operations = [\n        migrations.AddField(\n            model_name='car',\n            name='bio',\n            field=models.TextField(blank=True, null=True),\n        ),",
+        "detail": "cars.migrations.0009_car_bio",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "cars.migrations.0010_alter_car_value_alter_carinventory_cars_values",
+        "description": "cars.migrations.0010_alter_car_value_alter_carinventory_cars_values",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('cars', '0009_car_bio'),\n    ]\n    operations = [\n        migrations.AlterField(\n            model_name='car',\n            name='value',\n            field=models.FloatField(blank=True, null=True),\n        ),",
+        "detail": "cars.migrations.0010_alter_car_value_alter_carinventory_cars_values",
+        "documentation": {}
+    },
+    {
         "label": "CarAdmin",
         "kind": 6,
         "importPath": "cars.admin",
@@ -934,7 +1009,7 @@
         "kind": 6,
         "importPath": "cars.models",
         "description": "cars.models",
-        "peekOfCode": "class Car(models.Model):    \n    id = models.AutoField(primary_key=True)\n    model = models.CharField(max_length=200)\n    brand = models.ForeignKey(Brand, on_delete=models.PROTECT, related_name='car_brand')\n    factory_year = models.IntegerField(blank=True, null=True)\n    model_year = models.IntegerField(blank=True, null=True)\n    plate = models.CharField(max_length=10, blank=True, null=True)\n    value = models.DecimalField(max_digits=100,decimal_places=2,blank=True, null=True)\n    photo = models.ImageField(upload_to='cars',blank=True, null=True)\n    def __str__(self):",
+        "peekOfCode": "class Car(models.Model):    \n    id = models.AutoField(primary_key=True)\n    model = models.CharField(max_length=200)\n    brand = models.ForeignKey(Brand, on_delete=models.PROTECT, related_name='car_brand')\n    factory_year = models.IntegerField(blank=True, null=True)\n    model_year = models.IntegerField(blank=True, null=True)\n    plate = models.CharField(max_length=10, blank=True, null=True)\n    value = models.FloatField(blank=True, null=True)\n    photo = models.ImageField(upload_to='cars',blank=True, null=True)\n    bio = models.TextField(blank=True, null=True)",
         "detail": "cars.models",
         "documentation": {}
     },
@@ -943,7 +1018,7 @@
         "kind": 6,
         "importPath": "cars.models",
         "description": "cars.models",
-        "peekOfCode": "class CarInventory(models.Model):\n    cars_count = models.IntegerField()\n    cars_values = models.DecimalField(max_digits=100, decimal_places=2,blank=True, null=True)\n    created_at = models.DateTimeField(auto_now_add=True)\n    class Meta:\n        ordering= ['-created_at']\n        #query ordenada por padrao por data de criaçao\n    def __str__(self) -> str:\n        return f'{self.cars_count} - {self.cars_values}'",
+        "peekOfCode": "class CarInventory(models.Model):\n    cars_count = models.IntegerField()\n    cars_values = models.FloatField(blank=True, null=True)\n    created_at = models.DateTimeField(auto_now_add=True)\n    class Meta:\n        ordering= ['-created_at']\n        #query ordenada por padrao por data de criaçao\n    def __str__(self) -> str:\n        return f'{self.cars_count} - {self.cars_values}'",
         "detail": "cars.models",
         "documentation": {}
     },
@@ -952,7 +1027,7 @@
         "kind": 2,
         "importPath": "cars.signals",
         "description": "cars.signals",
-        "peekOfCode": "def car_inventory_update():\n    cars_count = Car.objects.all().count()\n    cars_value = Car.objects.aggregate(\n        total_value=Sum('value')\n    )['total_value']\n    CarInventory.objects.create(\n        cars_count = cars_count,\n        cars_value = cars_value\n    )\n@receiver(pre_save, sender=Car)",
+        "peekOfCode": "def car_inventory_update():\n    cars_count = Car.objects.all().count()\n    cars_value = Car.objects.aggregate(\n        total_value=Sum('value')\n    )['total_value']\n    CarInventory.objects.create(\n        cars_count = cars_count,\n        cars_values = cars_value\n    )\n@receiver(pre_save, sender=Car)",
         "detail": "cars.signals",
         "documentation": {}
     },
@@ -961,7 +1036,7 @@
         "kind": 2,
         "importPath": "cars.signals",
         "description": "cars.signals",
-        "peekOfCode": "def car_pre_save(sender, instance, **kwargs):\n    print('pre saveee')\n@receiver(post_save, sender=Car)\ndef car_post_save(sender, instance, **kwargs):\n    car_inventory_update()\n@receiver(pre_delete, sender=Car)\ndef car_pre_delete(sender, instance, **kwargs):\n    print('pre delete')\n@receiver(post_delete, sender=Car)\ndef car_post_delete(sender, instance, **kwargs):",
+        "peekOfCode": "def car_pre_save(sender, instance, **kwargs):\n    if not instance.bio:\n        ia_bio = bio_generate(instance.model, instance.brand, instance.factory_year)\n        instance.bio = ia_bio\n@receiver(post_save, sender=Car)\ndef car_post_save(sender, instance, **kwargs):\n    car_inventory_update()\n@receiver(pre_delete, sender=Car)\ndef car_pre_delete(sender, instance, **kwargs):\n    print('pre delete')",
         "detail": "cars.signals",
         "documentation": {}
     },
@@ -1035,6 +1110,15 @@
         "description": "cars.views",
         "peekOfCode": "class CarDeleteView(DeleteView):\n    model = Car\n    template_name = 'car_delete.html'\n    success_url = '/cars/'",
         "detail": "cars.views",
+        "documentation": {}
+    },
+    {
+        "label": "bio_generate",
+        "kind": 2,
+        "importPath": "ia_gemini.client",
+        "description": "ia_gemini.client",
+        "peekOfCode": "def bio_generate(modelo, brand, factory_year):\n    key = os.getenv(\"GEMINI_API_KEY\")\n    genai.configure(api_key=key)\n    prompt = f\"Me mostre uma descriçao de venda para o carro {brand} {modelo} {factory_year} em apenas 250 caracteres.Fale coisas especificas desse modelo.\"\n    model = genai.GenerativeModel(\"gemini-1.5-flash\")\n    response = model.generate_content(prompt)\n    return response.text",
+        "detail": "ia_gemini.client",
         "documentation": {}
     },
     {
